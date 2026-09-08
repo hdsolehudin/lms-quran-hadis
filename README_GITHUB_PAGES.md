@@ -21,3 +21,7 @@ LMS menggunakan Supabase untuk autentikasi dan penyimpanan data. `js/config.js` 
 6. Setelah beberapa saat, GitHub akan memberikan alamat website Pages.
 
 Semua file website dibuat dengan path relatif sehingga dapat dijalankan dari GitHub Pages.
+
+
+## LKPD Word
+File `files/LKPD_AlQuran_Hadis_Kelas_XII_Bab_II_Sabar_Lengkap.docx` dapat diunduh langsung dari tombol LKPD Bab II untuk siswa dan dari Dashboard Guru.
