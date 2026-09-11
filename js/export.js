@@ -1,9 +1,11 @@
 async function exportNilaiKuis(){
   if(!window.XLSX)return alert('Fitur Excel belum siap. Silakan muat ulang LMS.');
-  if(!window.db)return alert('Koneksi database belum siap.');
+  const C=window.LMS_CONFIG;
+  if(!window.supabase||!C?.SUPABASE_URL||!C?.SUPABASE_ANON_KEY)return alert('Koneksi database belum siap. Silakan muat ulang LMS.');
+  const client=window.supabase.createClient(C.SUPABASE_URL,C.SUPABASE_ANON_KEY);
   const [studentsRes,scoresRes]=await Promise.all([
-    db.from('profiles').select('id,name,nis,class_name').eq('role','student').order('class_name').order('name'),
-    db.from('quiz_scores').select('student_id,chapter,score,total,submitted_at')
+    client.from('profiles').select('id,name,nis,class_name').eq('role','student').order('class_name').order('name'),
+    client.from('quiz_scores').select('student_id,chapter,score,total,submitted_at')
   ]);
   if(studentsRes.error)return alert('Gagal memuat data siswa: '+studentsRes.error.message);
   if(scoresRes.error)return alert('Gagal memuat nilai kuis: '+scoresRes.error.message);
