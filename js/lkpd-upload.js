@@ -74,13 +74,19 @@
     let sub = null;
     if(p.data?.id){
       const r = await db.from('lks_submissions').select('*').eq('student_id',p.data.id).eq('chapter',Number(x.chapter)).maybeSingle();
+      if(r.error) return alert('Gagal mengambil LKPD: '+r.error.message);
       sub = r.data;
     }
     let link='';
     if(sub?.file_path){
       const s = await db.storage.from('lkpd').createSignedUrl(sub.file_path,3600);
-      if(!s.error) link = `<p><a class="btn" href="${s.data.signedUrl}" target="_blank" rel="noopener">📥 Buka/Unduh LKPD Siswa</a></p>`;
+      if(!s.error && s.data?.signedUrl){
+        const safeName = encodeURIComponent(sub.file_name || 'LKPD_Siswa.docx');
+        link = `<p><a class="btn" href="${s.data.signedUrl}" download="${safeName}" target="_blank" rel="noopener">📥 Download LKPD Siswa</a></p>`;
+      } else {
+        link = `<p class="notice">File tersimpan, tetapi tautan unduhan gagal dibuat. ${esc(s.error?.message||'Silakan coba muat ulang halaman.')}</p>`;
+      }
     }
-    shell(`<section class="card"><button class="btn alt" onclick="teacher()">← Kembali ke Pengumpulan LKPD</button><h2>📄 Hasil LKPD Siswa</h2><p><b>Siswa:</b> ${esc(x.name||'Siswa')}</p><p><b>NIS:</b> ${esc(x.nis||'-')}</p><p><b>Bab:</b> ${esc(x.chapter||'-')}</p><p><b>Status:</b> ${esc(sub?.status||x.status||'submitted')}</p><p><b>File:</b> ${esc(sub?.file_name||'Belum ada file')}</p>${link}<h3>Catatan pengumpulan</h3><div class="notice" style="white-space:pre-wrap;line-height:1.7">File LKPD dikumpulkan dalam format Word (.docx). Guru dapat membuka/menyimpan file melalui tombol di atas.</div></section>`);
+    shell(`<section class="card"><button class="btn alt" onclick="teacher()">← Kembali ke Pengumpulan LKPD</button><h2>📄 Hasil LKPD Siswa</h2><p><b>Siswa:</b> ${esc(x.name||'Siswa')}</p><p><b>NIS:</b> ${esc(x.nis||'-')}</p><p><b>Bab:</b> ${esc(x.chapter||'-')}</p><p><b>Status:</b> ${esc(sub?.status||x.status||'submitted')}</p><p><b>File:</b> ${esc(sub?.file_name||'Belum ada file')}</p>${link}<h3>Catatan pengumpulan</h3><div class="notice" style="white-space:pre-wrap;line-height:1.7">File LKPD dikumpulkan dalam format Word (.docx). Guru dapat mengunduh file melalui tombol di atas.</div></section>`);
   };
 })();
