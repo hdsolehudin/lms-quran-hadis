@@ -1,27 +1,38 @@
 function findQuizTable(){
   const tables=[...document.querySelectorAll('table')];
   return tables.find(t=>{
-    const text=(t.innerText||'').toLowerCase();
     const rows=[...t.querySelectorAll('tr')];
     const first=(rows[0]?.innerText||'').toLowerCase();
-    const score=(text.includes('bab 1')?2:0)+(text.includes('bab 2')?2:0)+(text.includes('rata-rata')?2:0)+(first.includes('nama')?1:0)+(first.includes('nis')?1:0)+(first.includes('kelas')?1:0);
-    return score>=5;
+    const text=(t.innerText||'').toLowerCase();
+    return first.includes('nama') && (first.includes('bab 1') || first.includes('bab')) &&
+      (text.includes('nilai') || text.includes('rata-rata') || text.includes('kuis'));
+  })||tables.find(t=>{
+    const text=(t.innerText||'').toLowerCase();
+    return text.includes('bab 1')&&text.includes('bab 2')&&text.includes('nama');
+  })||null;
+}
+function findQuizHeading(){
+  return [...document.querySelectorAll('h2,h3,h4,p')].find(el=>{
+    const text=(el.innerText||'').toLowerCase();
+    return text.includes('rekap nilai kuis') || text.includes('nilai kuis');
   })||null;
 }
 function addExcelExportButton(){
   if(document.getElementById('exportExcelBtn'))return;
   const t=findQuizTable();
-  if(!t)return;
+  const heading=findQuizHeading();
+  if(!t && !heading)return;
   const btn=document.createElement('button');
   btn.id='exportExcelBtn';
   btn.className='btn';
   btn.textContent='📥 Download Rekap Nilai Kuis Siswa';
   btn.onclick=exportNilaiKuis;
-  t.parentElement.insertBefore(btn,t);
+  if(t)t.parentElement.insertBefore(btn,t);
+  else heading.parentElement.insertBefore(btn,heading.nextSibling);
 }
 function exportNilaiKuis(){
   const t=findQuizTable();
-  if(!t)return alert('Rekap nilai kuis siswa belum tersedia.');
+  if(!t)return alert('Rekap nilai kuis siswa belum tersedia. Silakan buka Rekap Nilai Kuis terlebih dahulu.');
   if(!window.XLSX)return alert('Fitur Excel belum siap. Silakan muat ulang LMS.');
   const rows=[...t.querySelectorAll('tr')].map(tr=>[...tr.querySelectorAll('th,td')].map(td=>td.innerText.trim()));
   if(rows.length<2)return alert('Belum ada data nilai kuis siswa untuk diunduh.');
