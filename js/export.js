@@ -1,51 +1,44 @@
-function findQuizTable(){
-  const tables=[...document.querySelectorAll('table')];
-  return tables.find(t=>{
-    const rows=[...t.querySelectorAll('tr')];
-    const first=(rows[0]?.innerText||'').toLowerCase();
-    const text=(t.innerText||'').toLowerCase();
-    return first.includes('nama') && (first.includes('bab 1') || first.includes('bab')) &&
-      (text.includes('nilai') || text.includes('rata-rata') || text.includes('kuis'));
-  })||tables.find(t=>{
-    const text=(t.innerText||'').toLowerCase();
-    return text.includes('bab 1')&&text.includes('bab 2')&&text.includes('nama');
-  })||null;
-}
-function findQuizHeading(){
-  return [...document.querySelectorAll('h2,h3,h4,p')].find(el=>{
-    const text=(el.innerText||'').toLowerCase();
-    return text.includes('rekap nilai kuis') || text.includes('nilai kuis');
-  })||null;
-}
-function addExcelExportButton(){
-  if(document.getElementById('exportExcelBtn'))return;
-  const t=findQuizTable();
-  const heading=findQuizHeading();
-  if(!t && !heading)return;
-  const btn=document.createElement('button');
-  btn.id='exportExcelBtn';
-  btn.className='btn';
-  btn.textContent='📥 Download Rekap Nilai Kuis Siswa';
-  btn.onclick=exportNilaiKuis;
-  if(t)t.parentElement.insertBefore(btn,t);
-  else heading.parentElement.insertBefore(btn,heading.nextSibling);
-}
-function exportNilaiKuis(){
-  const t=findQuizTable();
-  if(!t)return alert('Rekap nilai kuis siswa belum tersedia. Silakan buka Rekap Nilai Kuis terlebih dahulu.');
+async function exportNilaiKuis(){
   if(!window.XLSX)return alert('Fitur Excel belum siap. Silakan muat ulang LMS.');
-  const rows=[...t.querySelectorAll('tr')].map(tr=>[...tr.querySelectorAll('th,td')].map(td=>td.innerText.trim()));
-  if(rows.length<2)return alert('Belum ada data nilai kuis siswa untuk diunduh.');
+  if(!window.db)return alert('Koneksi database belum siap.');
+  const [studentsRes,scoresRes]=await Promise.all([
+    db.from('profiles').select('*').eq('role','student').order('class_name').order('name'),
+    db.from('quiz_scores').select('*')
+  ]);
+  if(studentsRes.error)return alert('Gagal memuat data siswa: '+studentsRes.error.message);
+  if(scoresRes.error)return alert('Gagal memuat nilai kuis: '+scoresRes.error.message);
+  const students=studentsRes.data||[],scores=scoresRes.data||[];
+  if(!students.length)return alert('Belum ada data siswa untuk direkap.');
+  const rows=[['Nama','NIS','Kelas','Bab 1','Bab 2','Bab 3','Bab 4','Rata-rata']];
+  students.forEach(u=>{
+    const vals=[1,2,3,4].map(ch=>{
+      const s=scores.find(x=>x.student_id===u.id&&x.chapter===ch);
+      return s&&s.total?Math.round(s.score/s.total*100):'';
+    });
+    const nums=vals.filter(v=>v!=='');
+    const avg=nums.length?Math.round(nums.reduce((a,b)=>a+b,0)/nums.length):'';
+    rows.push([u.name||'',u.nis||'',u.class_name||'',...vals,avg]);
+  });
   const ws=XLSX.utils.aoa_to_sheet(rows);
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'Rekap Nilai Kuis');
   XLSX.writeFile(wb,'Rekap_Nilai_Kuis_Siswa_Quran_Hadis.xlsx');
 }
-function watchQuizTable(){
-  addExcelExportButton();
+
+function addExcelExportButton(){
+  if(document.getElementById('exportExcelBtn'))return;
+  const btn=document.createElement('button');
+  btn.id='exportExcelBtn';
+  btn.className='btn';
+  btn.textContent='📥 Download Rekap Nilai Kuis Siswa';
+  btn.onclick=exportNilaiKuis;
+  const headings=[...document.querySelectorAll('h2,h3,h4,p')];
+  const heading=headings.find(el=>/rekap nilai kuis|nilai kuis/i.test(el.innerText||''));
+  if(heading)heading.parentElement.insertBefore(btn,heading.nextSibling);
 }
-const excelObserver=new MutationObserver(()=>watchQuizTable());
+
+const excelObserver=new MutationObserver(()=>addExcelExportButton());
 window.addEventListener('DOMContentLoaded',()=>{
-  watchQuizTable();
+  addExcelExportButton();
   excelObserver.observe(document.body,{childList:true,subtree:true});
 });
