@@ -1,7 +1,15 @@
+function findQuizTable(){
+  const tables=[...document.querySelectorAll('table')];
+  return tables.find(t=>{
+    const text=(t.innerText||'').toLowerCase();
+    return text.includes('bab 1')&&text.includes('bab 2')&&(
+      text.includes('nilai')||text.includes('rata-rata')||text.includes('kuis')
+    );
+  })||null;
+}
 function addExcelExportButton(){
   if(document.getElementById('exportExcelBtn'))return;
-  const tables=document.querySelectorAll('table');
-  const t=[...tables].find(x=>x.innerText.includes('Bab 1')&&x.innerText.includes('Bab 2')&&x.innerText.includes('Rata-rata'));
+  const t=findQuizTable();
   if(!t)return;
   const btn=document.createElement('button');
   btn.id='exportExcelBtn';
@@ -11,8 +19,7 @@ function addExcelExportButton(){
   t.parentElement.insertBefore(btn,t);
 }
 function exportNilaiKuis(){
-  const tables=document.querySelectorAll('table');
-  const t=[...tables].find(x=>x.innerText.includes('Bab 1')&&x.innerText.includes('Bab 2')&&x.innerText.includes('Rata-rata'));
+  const t=findQuizTable();
   if(!t)return alert('Rekap nilai kuis siswa belum tersedia.');
   if(!window.XLSX)return alert('Fitur Excel belum siap. Silakan muat ulang LMS.');
   const rows=[...t.querySelectorAll('tr')].map(tr=>[...tr.querySelectorAll('th,td')].map(td=>td.innerText.trim()));
