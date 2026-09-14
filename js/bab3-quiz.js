@@ -1,0 +1,26 @@
+/* Tambahan Bank Kuis Bab 3: 20 soal C1-C2, 5 opsi A-E. */
+(function(){
+if(!window.LMS_DATA||!LMS_DATA.quiz)return;
+LMS_DATA.quiz[3]=(LMS_DATA.quiz[3]||[]).concat([
+["Tema utama Bab III Al-Qur'an Hadis Kelas XII adalah ....",["Hidup sederhana","Sabar menghadapi cobaan","Menjaga kelestarian lingkungan","Dakwah penuh hikmah","Musyawarah dalam kehidupan"],2],
+["QS Ar-Rum/30:41–42 membahas tentang ....",["kewajiban berdakwah","kerusakan di darat dan laut","kewajiban bermusyawarah","keutamaan bersedekah","perintah menuntut ilmu"],1],
+["Menurut QS Ar-Rum/30:41, kerusakan di darat dan laut disebabkan oleh ....",["perubahan musim","bencana alam semata","perbuatan tangan manusia","pertumbuhan penduduk","perubahan iklim"],2],
+["Lafaz al-fasad dalam pembahasan QS Ar-Rum/30:41 berarti ....",["kebaikan","kerusakan","kesabaran","keberkahan","keselamatan"],1],
+["QS Al-A'raf/7:56 berisi larangan untuk ....",["bepergian","bekerja","berbuat kerusakan di bumi","bercocok tanam","menggunakan air"],2],
+["Dalam QS Al-A'raf/7:57, salah satu tanda kekuasaan Allah adalah ....",["turunnya salju","datangnya angin pembawa kabar gembira","terjadinya gempa","munculnya gunung","terjadinya siang dan malam"],1],
+["QS Sad/38:27 menjelaskan bahwa Allah menciptakan langit dan bumi ....",["tanpa tujuan","secara sia-sia","dengan tujuan dan hikmah","hanya untuk orang beriman","untuk kepentingan manusia saja"],2],
+["Dalam QS Al-Furqan/25:45–50, air yang diturunkan Allah dari langit disebut ....",["mā'an ḥarāman","mā'an ṭahūran","mā'an najisan","mā'an qalīlan","mā'an kathīran"],1],
+["QS Al-Baqarah/2:204–206 menggambarkan orang yang berusaha merusak ....",["masjid dan madrasah","jalan dan jembatan","tanaman dan ternak","sungai dan laut saja","rumah dan sekolah"],2],
+["Hadis riwayat Bukhari dan Muslim dari Anas bin Malik memberikan motivasi untuk ....",["menebang pohon","menanam tanaman","membuang sampah","menggunakan air secara berlebihan","mengeksploitasi alam"],1],
+["Kandungan QS Ar-Rum/30:41 menunjukkan bahwa manusia harus menjaga lingkungan karena ....",["lingkungan hanya bermanfaat bagi manusia","kerusakan lingkungan dapat berdampak buruk bagi kehidupan","lingkungan tidak boleh dimanfaatkan","semua bencana pasti disebabkan manusia","manusia tidak membutuhkan sumber daya alam"],1],
+["Perbuatan berikut yang paling sesuai dengan kandungan QS Ar-Rum/30:41 adalah ....",["membuang limbah ke sungai","menebang hutan tanpa reboisasi","membakar sampah sembarangan","menjaga kebersihan dan kelestarian lingkungan","mengeksploitasi alam secara berlebihan"],3],
+["QS Al-A'raf/7:56 melarang manusia melakukan kerusakan setelah bumi diperbaiki. Maksud larangan tersebut adalah ....",["manusia tidak boleh memanfaatkan alam","manusia harus memanfaatkan alam secara bijaksana","manusia harus meninggalkan kehidupan dunia","manusia harus menguasai seluruh sumber daya alam","manusia tidak perlu mengelola lingkungan"],1],
+["Perumpamaan tanah subur dan tanah tidak subur dalam QS Al-A'raf/7:58 menunjukkan bahwa ....",["semua tanah menghasilkan tanaman yang sama","kondisi tanah memengaruhi pertumbuhan tanaman","hujan tidak diperlukan bagi tanaman","tanaman hanya dapat tumbuh di tanah kering","tanah tidak memiliki manfaat bagi manusia"],1],
+["Kandungan QS Sad/38:27 dapat mendorong manusia untuk menjaga lingkungan karena ....",["seluruh ciptaan Allah memiliki tujuan dan hikmah","alam boleh dimanfaatkan tanpa batas","manusia bebas merusak alam","alam tidak memiliki hubungan dengan kehidupan","lingkungan hanya berguna bagi manusia"],0],
+["Berdasarkan QS Al-Furqan/25:45–50, hujan memiliki peranan penting bagi kehidupan karena ....",["menyebabkan tanah menjadi kering","menghidupkan negeri yang tandus dan memberi minum makhluk hidup","menghentikan seluruh aktivitas manusia","mengurangi sumber air di bumi","menyebabkan tumbuhan tidak berkembang"],1],
+["Seseorang membuang sampah ke sungai karena menganggap sungai akan membersihkannya sendiri. Sikap tersebut bertentangan dengan QS Al-A'raf/7:56 karena ....",["sungai tidak boleh digunakan manusia","membuang sampah merupakan bentuk kerusakan lingkungan","semua sampah harus dibakar","manusia tidak boleh berada di dekat sungai","sungai hanya digunakan untuk pertanian"],1],
+["Kandungan QS Al-Baqarah/2:204–206 mengajarkan bahwa seseorang tidak cukup hanya memiliki perkataan yang baik, tetapi juga harus ....",["menunjukkan kekuasaan","memperbanyak harta","menjaga perilakunya agar tidak melakukan kerusakan","menghindari semua kegiatan sosial","mengutamakan kepentingan pribadi"],2],
+["Seorang siswa mengikuti kegiatan menanam pohon di lingkungan madrasah. Perbuatan tersebut sesuai dengan kandungan Bab III karena ....",["tanaman hanya berguna untuk memperindah sekolah","menjaga lingkungan merupakan bentuk kepedulian terhadap kehidupan","menanam pohon merupakan kewajiban setiap siswa","semua tanaman pasti menghasilkan keuntungan","lingkungan sekolah lebih penting daripada lingkungan lainnya"],1],
+["Hadis tentang menanam tanaman mengajarkan bahwa tanaman yang manfaatnya dinikmati manusia, hewan, atau burung dapat menjadi ....",["sumber perselisihan","beban bagi pemiliknya","sedekah bagi penanamnya","tanda kemewahan","bentuk pemborosan"],2]
+]);
+})();
