@@ -17,9 +17,10 @@ async function saveScale(){
  const score=vals.reduce((a,b)=>a+b,0);
  btn.disabled=true;btn.textContent='Mengirim...';
  try{
-   const {error}=await db.from('cbt_attitude').insert([{student_name:nama,student_class:kelas,participant_number:nomor||null,score:score,answers:vals}]);
+   const {data,error}=await db.rpc('submit_attitude_scale',{p_student_name:nama,p_student_class:kelas,p_participant_number:nomor||null,p_score:score,p_answers:vals});
    if(error) throw error;
-   app.innerHTML=`<section class="card result"><h2>Skala Sikap Berhasil Dikirim</h2><div class="score">${score}</div><p>Terima kasih, ${esc(nama)}.</p><p><a href="./">Kembali ke CBT</a></p></section>`;
- }catch(err){console.error('Skala Sikap:',err);msg.textContent='Gagal mengirim jawaban. Silakan coba lagi. Detail: '+(err?.message||'koneksi/database bermasalah.');btn.disabled=false;btn.textContent='Kirim Skala Sikap';}
+   if(!data) throw new Error('Database tidak mengembalikan ID pengiriman.');
+   app.innerHTML=`<section class="card result"><h2>Skala Sikap Berhasil Dikirim</h2><div class="score">${score}</div><p>Terima kasih, ${esc(nama)}.</p><p>Jawaban Anda sudah tersimpan.</p><p><a href="./">Kembali ke CBT</a></p></section>`;
+ }catch(err){console.error('Skala Sikap:',err);msg.textContent='Gagal mengirim jawaban: '+(err?.message||'koneksi/database bermasalah.');btn.disabled=false;btn.textContent='Kirim Skala Sikap';}
 }
 show();
