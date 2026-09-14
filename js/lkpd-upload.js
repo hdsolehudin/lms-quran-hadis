@@ -13,6 +13,12 @@
     if(old) old.remove();
     if(oldBtn) oldBtn.remove();
 
+    const download = Array.from(section.querySelectorAll('a')).find(a => a.href.includes('LKPD_AlQuran_Hadis_Kelas_XII_Bab_II_Sabar_Lengkap.docx'));
+    if(download){
+      download.href = `https://raw.githubusercontent.com/hdsolehudin/lms-quran-hadis/main/LKPD_AlQuran_Hadis_Kelas_XII_Bab_${no}_${no===3?'Lingkungan':'Sabar_Lengkap'}.docx`;
+      download.textContent = '📥 Download LKPD Word';
+    }
+
     const area = document.createElement('div');
     area.innerHTML = `
       <div class="notice" style="margin:10px 0;line-height:1.7">
