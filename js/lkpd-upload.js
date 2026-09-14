@@ -15,7 +15,7 @@
 
     const download = Array.from(section.querySelectorAll('a')).find(a => a.href.includes('LKPD_AlQuran_Hadis_Kelas_XII_Bab_II_Sabar_Lengkap.docx'));
     if(download && no===3){
-      download.href = 'https://hdsolehudin.github.io/lms-quran-hadis/LKPD_Bab_3.docx';
+      download.href = 'https://hdsolehudin.github.io/lms-quran-hadis/LKPD_Bab_3_Rapi.docx';
       download.textContent = '📥 Download LKPD Word';
     }
 
