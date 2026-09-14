@@ -1,4 +1,4 @@
-/* Bank kuis Bab 2: 30 soal, 5 opsi A-E, C3-C6 + HOTS. */
+/* Bank kuis Bab 2: 45 soal, 5 opsi A-E, C1-C6 + HOTS. */
 (function(){
 if(!window.LMS_DATA||!LMS_DATA.quiz)return;
 LMS_DATA.quiz[2]=[
@@ -31,6 +31,21 @@ LMS_DATA.quiz[2]=[
 ["Jika kamu diminta menyusun langkah penyelesaian masalah berdasarkan QS Ali 'Imran/3:186, urutan yang paling tepat adalah …",["marah → membalas → menyerah → berdoa","menghindar → diam → melupakan → selesai","menghadapi ujian → bersabar → bertakwa → tetap menjalankan kebaikan","membalas → mencari dukungan → menyalahkan orang lain","mengeluh → menyerah → menunggu pertolongan"],2],
 ["HOTS: Kelasmu ingin membuat kegiatan ‘Pekan Sabar’. Agar kegiatan tersebut mencerminkan Bab II, rancangan terbaik adalah …",["lomba siapa yang paling lama diam","seminar tentang cara menghindari masalah","kajian ayat dan hadis, studi kasus, refleksi pengalaman, serta proyek penerapan sabar","kegiatan hiburan tanpa pembahasan agama","lomba menceritakan masalah pribadi tanpa solusi"],2],
 ["HOTS: Kamu diminta membuat solusi bagi siswa yang mengalami tekanan karena kegagalan akademik. Kegiatan yang paling mencerminkan konsep sabar adalah …",["poster ‘Jangan pernah gagal’","kelompok pendampingan yang menggabungkan doa, refleksi, evaluasi kesalahan, dan perencanaan usaha berikutnya","kegiatan untuk menyalahkan guru","meminta siswa melupakan kegagalannya","memberikan nilai tambahan tanpa memperbaiki proses belajar"],1],
-["HOTS: Sebuah kelompok siswa menghadapi kegagalan dalam proyek sekolah dan mulai saling menyalahkan. Jika kamu menjadi ketua kelompok, tindakan yang paling mencerminkan kandungan Bab II adalah …",["mencari anggota yang paling bersalah dan mengeluarkannya","membatalkan proyek dan menyalahkan keadaan","mengajak anggota melakukan refleksi, menerima kegagalan, memperbaiki kesalahan, membagi tugas kembali, dan melanjutkan usaha","menyerahkan seluruh tanggung jawab kepada guru","mengabaikan masalah agar konflik berhenti"],2]
+["HOTS: Sebuah kelompok siswa menghadapi kegagalan dalam proyek sekolah dan mulai saling menyalahkan. Jika kamu menjadi ketua kelompok, tindakan yang paling mencerminkan kandungan Bab II adalah …",["mencari anggota yang paling bersalah dan mengeluarkannya","membatalkan proyek dan menyalahkan keadaan","mengajak anggota melakukan refleksi, menerima kegagalan, memperbaiki kesalahan, membagi tugas kembali, dan melanjutkan usaha","menyerahkan seluruh tanggung jawab kepada guru","mengabaikan masalah agar konflik berhenti"],2],
+["Menurut QS Al-Baqarah/2:155, Allah akan menguji manusia dengan sedikit ketakutan dan ….",["kemakmuran","kelaparan","kemenangan","kesenangan","kekayaan"],1],
+["Dalam QS Al-Baqarah/2:156, kalimat yang diucapkan oleh orang yang tertimpa musibah disebut ….",["hamdalah","takbir","istirja","tasbih","tahlil"],2],
+["Arti kalimat ‘Innā lillāhi wa innā ilaihi rāji‘ūn’ adalah ….",["Allah Maha Besar dan kepada-Nya kita bersyukur","Sesungguhnya kami milik Allah dan sesungguhnya kepada-Nya kami akan kembali","Tiada Tuhan selain Allah dan Muhammad utusan Allah","Segala puji bagi Allah Tuhan seluruh alam","Aku memohon ampun kepada Allah dan kembali kepada-Nya"],1],
+["Menurut QS Al-Baqarah/2:157, orang-orang yang sabar memperoleh … dari Allah Swt.",["harta dan jabatan","selawat, rahmat, dan petunjuk","kekuasaan dan popularitas","kesehatan dan kekayaan","keturunan dan kedudukan"],1],
+["QS Ali 'Imran/3:186 menjelaskan bahwa manusia pasti akan diuji dalam ….",["ilmu dan pekerjaannya","harta dan dirinya","keluarga dan sekolahnya","makanan dan minumannya","perjalanan dan tempat tinggalnya"],1],
+["Salah satu ujian yang disebutkan dalam QS Ali 'Imran/3:186 adalah ….",["mendapat banyak teman","mendengar perkataan yang menyakitkan hati","mendapat nilai tinggi","memiliki banyak harta","mendapat pujian dari orang lain"],1],
+["Menurut HR Muslim No. 5318, apabila seorang mukmin mendapatkan kesenangan, ia hendaknya ….",["mengeluh","bersabar","bersyukur","menangis","menghindar"],2],
+["Menurut HR Muslim No. 5318, apabila seorang mukmin tertimpa musibah, ia hendaknya ….",["bersabar","marah","menyerah","membalas","mengeluh"],0],
+["Hadis HR Tirmizi No. 2322 menyebutkan bahwa manusia yang paling berat ujiannya adalah ….",["para pedagang","para nabi","orang kaya","orang miskin","para pemimpin"],1],
+["Menurut HR Tirmizi No. 2322, seseorang diuji sesuai dengan ….",["usia dan hartanya","jumlah keluarganya","kadar agamanya","tingkat pendidikannya","kedudukan sosialnya"],2],
+["Istilah ‘sabar’ dalam Bab II berkaitan dengan sikap seseorang ketika ….",["mendapat cobaan","mendapat hadiah","mendapat pujian","mendapat jabatan","mendapat keuntungan"],0],
+["Sikap sabar dalam menghadapi cobaan seharusnya disertai dengan ….",["kemalasan","ikhtiar atau usaha","keputusasaan","kemarahan","ketakutan"],1],
+["Salah satu tujuan adanya cobaan bagi orang beriman adalah untuk ….",["menghilangkan semua kebahagiaan","mengukur keteguhan iman dan kesabaran","membuat manusia selalu takut","menjauhkan manusia dari Allah","mengurangi amal saleh"],1],
+["Menurut materi Bab II, ketika menghadapi ujian seorang mukmin perlu memiliki dua bekal penting, yaitu ….",["kekayaan dan keberanian","kesabaran dan ketenangan","kekuasaan dan kecerdasan","jabatan dan pengalaman","kemampuan dan popularitas"],1],
+["Pernyataan yang sesuai dengan HR Muslim No. 5318 adalah ….",["Semua keadaan mukmin dapat menjadi kebaikan","Mukmin hanya baik ketika mendapatkan kesenangan","Musibah selalu berarti keburukan","Mukmin tidak pernah mendapat ujian","Nikmat tidak perlu disyukuri"],0]
 ];
 })();
